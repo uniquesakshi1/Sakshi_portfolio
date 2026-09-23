@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakshi Chavhan | Frontend Developer | Pune</title>
+    <meta name="description" content="Sakshi Chavhan is a B.Sc. Computer Science graduate and aspiring Frontend Developer from Pune, skilled in HTML, CSS, JavaScript and responsive web development.">
+    <meta name="keywords" content="Sakshi Chavhan, Frontend Developer, Web Developer, Pune, HTML5, CSS3, JavaScript, PWA, Responsive Design, Junior Frontend Developer">
+    <meta name="author" content="Sakshi Chavhan">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Metadata -->
+    <meta property="og:title" content="Sakshi Chavhan | Frontend Developer | Pune">
+    <meta property="og:description" content="B.Sc. Computer Science graduate building responsive, practical, and user-friendly web interfaces.">
+    <meta property="og:type" content="website">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b132b;
+            color: #e2e8f0;
+        }
+
+        .navy-glow {
+            box-shadow: 0 0 35px -5px rgba(56, 189, 248, 0.12);
+        }
+
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -10px rgba(56, 189, 248, 0.2);
+            border-color: rgba(56, 189, 248, 0.4);
+        }
+
+        .glass-nav {
+            background: rgba(11, 19, 43, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        #toast {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b132b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #38bdf8;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-sky-500 selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-nav border-b border-slate-800/80">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#hero" class="text-xl font-bold tracking-tight text-white flex items-center gap-2 group">
+                <span class="bg-sky-500 text-slate-950 font-black px-2.5 py-1 rounded-lg text-sm group-hover:bg-sky-400 transition-colors">SC</span>
+                <span class="group-hover:text-sky-400 transition-colors">Sakshi Chavhan</span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#about" class="hover:text-sky-400 transition-colors">About</a>
+                <a href="#skills" class="hover:text-sky-400 transition-colors">Skills</a>
+                <a href="#projects" class="hover:text-sky-400 transition-colors">Projects</a>
+                <a href="#career-goals" class="hover:text-sky-400 transition-colors">Career Goals</a>
+                <a href="#education" class="hover:text-sky-400 transition-colors">Education</a>
+                <a href="#contact" class="hover:text-sky-400 transition-colors">Contact</a>
+            </nav>
+
+            <!-- Resume & LinkedIn Action Buttons (Desktop) -->
+            <div class="hidden md:flex items-center gap-3">
+                <a href="https://www.linkedin.com/in/sakshi-chavhan-41422b39a" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-slate-800 text-sky-400 hover:bg-sky-500 hover:text-slate-950 transition-all" title="LinkedIn Profile">
+                    <i class="fa-brands fa-linkedin-in text-base"></i>
+                </a>
+                <a href="Sakshi_Chavhan_Frontend_Developer_CV.pdf" download="Sakshi_Chavhan_Frontend_Developer_CV.pdf" onclick="handleResumeDownload(event)" class="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-lg bg-sky-500 text-slate-950 hover:bg-sky-400 transition-all shadow-sm shadow-sky-500/20 active:scale-95">
+                    <i class="fa-solid fa-download"></i> Download Resume
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobileMenuBtn" aria-label="Toggle navigation menu" class="md:hidden p-2 text-slate-300 hover:text-white focus:outline-none">
+                <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobileDrawer" class="hidden md:hidden bg-slate-900 border-b border-slate-800 px-4 pt-3 pb-6 transition-all">
+            <div class="flex flex-col gap-4 text-sm font-medium text-slate-300">
+                <a href="#about" class="mobile-nav-link hover:text-sky-400 transition-colors py-1">About</a>
+                <a href="#skills" class="mobile-nav-link hover:text-sky-400 transition-colors py-1">Skills</a>
+                <a href="#projects" class="mobile-nav-link hover:text-sky-400 transition-colors py-1">Projects</a>
+                <a href="#career-goals" class="mobile-nav-link hover:text-sky-400 transition-colors py-1">Career Goals</a>
+                <a href="#education" class="mobile-nav-link hover:text-sky-400 transition-colors py-1">Education</a>
+                <a href="#contact" class="mobile-nav-link hover:text-sky-400 transition-colors py-1">Contact</a>
+                <div class="pt-2 border-t border-slate-800 flex flex-col gap-2">
+                    <a href="https://www.linkedin.com/in/sakshi-chavhan-41422b39a" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 text-xs font-semibold px-4 py-2.5 rounded-lg bg-blue-600 text-white hover:bg-blue-500 transition-all">
+                        <i class="fa-brands fa-linkedin text-sm"></i> Connect on LinkedIn
+                    </a>
+                    <a href="Sakshi_Chavhan_Frontend_Developer_CV.pdf" download="Sakshi_Chavhan_Frontend_Developer_CV.pdf" onclick="handleResumeDownload(event)" class="inline-flex items-center justify-center gap-2 text-xs font-semibold px-4 py-2.5 rounded-lg bg-sky-500 text-slate-950 hover:bg-sky-400 transition-all">
+                        <i class="fa-solid fa-download"></i> Download Resume
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-16">
+        <!-- HERO SECTION -->
+        <section id="hero" class="relative py-20 lg:py-28 overflow-hidden">
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="max-w-3xl">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-950/60 border border-sky-800/50 text-sky-400 text-xs font-medium mb-6">
+                        <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+                        Available for Frontend & Web Developer Internships / Fresher Roles
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-4">
+                        Hi, I'm <span class="text-sky-400">Sakshi Chavhan</span>
+                    </h1>
+
+                    <h2 class="text-2xl sm:text-3xl font-semibold text-slate-300 mb-6">
+                        Frontend Developer
+                    </h2>
+
+                    <p class="text-lg sm:text-xl text-slate-400 leading-relaxed mb-8 max-w-2xl font-light">
+                        "Building responsive, practical and user-friendly web experiences."
+                    </p>
+
+                    <div class="flex flex-wrap items-center gap-4 mb-10">
+                        <a href="#projects" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-sky-500 text-slate-950 font-semibold text-sm hover:bg-sky-400 transition-all shadow-lg shadow-sky-500/20 active:scale-95">
+                            <i class="fa-solid fa-briefcase"></i> View Projects
+                        </a>
+
+                        <a href="Sakshi_Chavhan_Frontend_Developer_CV.pdf" download="Sakshi_Chavhan_Frontend_Developer_CV.pdf" onclick="handleResumeDownload(event)" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-800 text-slate-200 border border-slate-700 font-semibold text-sm hover:bg-slate-700 hover:text-white transition-all active:scale-95">
+                            <i class="fa-solid fa-file-pdf text-red-400"></i> Download Resume
+                        </a>
+
+                        <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 text-slate-300 border border-slate-800 font-semibold text-sm hover:bg-slate-800 hover:text-white transition-all active:scale-95">
+                            <i class="fa-solid fa-envelope"></i> Contact Me
+                        </a>
+                    </div>
+
+                    <!-- Direct Social & Contact Badges -->
+                    <div class="flex flex-wrap items-center gap-3 text-slate-300 text-xs font-medium">
+                        <a href="https://www.linkedin.com/in/sakshi-chavhan-41422b39a" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-blue-950/60 border border-blue-800/60 text-blue-400 hover:bg-blue-900/60 transition-all">
+                            <i class="fa-brands fa-linkedin text-sm"></i> LinkedIn Profile
+                        </a>
+                        <a href="https://wa.me/918999117971" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-emerald-950/60 border border-emerald-800/60 text-emerald-400 hover:bg-emerald-900/60 transition-all">
+                            <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp: +91 8999117971
+                        </a>
+                        <a href="mailto:fationplanet@gmail.com" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-sky-950/60 border border-sky-800/60 text-sky-400 hover:bg-sky-900/60 transition-all">
+                            <i class="fa-solid fa-envelope text-sm"></i> fationplanet@gmail.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT ME SECTION -->
+        <section id="about" class="py-16 bg-slate-900/50 border-y border-slate-800/80">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="p-2 rounded-lg bg-sky-500/10 text-sky-400">
+                        <i class="fa-solid fa-user-check text-xl"></i>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">About Me</h2>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    <div class="lg:col-span-8 bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 navy-glow">
+                        <p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-6 font-normal">
+                            I am a B.Sc. Computer Science graduate and aspiring Frontend Developer with hands-on experience building responsive websites and practical web/PWA projects. I work with HTML, CSS and JavaScript and enjoy creating clean, mobile-friendly and user-focused web interfaces. I am looking for an opportunity to work on real-world projects, contribute to a development team and continue improving my frontend development skills.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-800 text-sm">
+                            <div class="flex items-center gap-3 text-slate-300">
+                                <i class="fa-solid fa-location-dot text-sky-400 w-5 text-center"></i>
+                                <span>Based in <strong>Pune, Maharashtra, India</strong></span>
+                            </div>
+                            <div class="flex items-center gap-3 text-slate-300">
+                                <i class="fa-solid fa-graduation-cap text-sky-400 w-5 text-center"></i>
+                                <span>B.Sc. Computer Science Graduate</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-slate-300">
+                                <i class="fa-solid fa-mobile-screen text-sky-400 w-5 text-center"></i>
+                                <span>Focus on Responsive & Mobile-first UI</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-slate-300">
+                                <i class="fa-solid fa-laptop-code text-sky-400 w-5 text-center"></i>
+                                <span>Hands-on PWA & Web Workflows</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-4 bg-slate-900 border border-slate-800 rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-circle-info text-sky-400"></i> Quick Summary
+                        </h3>
+                        <ul class="space-y-3 text-sm text-slate-300">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-sky-400 mt-1"></i>
+                                <span>Strong foundation in Web Development fundamentals.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-sky-400 mt-1"></i>
+                                <span>Hands-on practical projects built using standard Web APIs.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-sky-400 mt-1"></i>
+                                <span>Clean, semantic code structure with mobile compatibility.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-sky-400 mt-1"></i>
+                                <span>Ready to join immediate internships or entry-level roles.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills" class="py-16">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                    <div>
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="p-2 rounded-lg bg-sky-500/10 text-sky-400">
+                                <i class="fa-solid fa-code text-xl"></i>
+                            </div>
+                            <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Technical Skills</h2>
+                        </div>
+                        <p class="text-slate-400 text-sm">Core technologies, tools, and practices I work with.</p>
+                    </div>
+                    <div class="text-xs font-mono bg-slate-900 text-sky-400 border border-slate-800 px-3 py-1.5 rounded-lg inline-block w-fit">
+                        11 Core Skillset Items
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                    <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-center card-hover flex flex-col items-center justify-center gap-2">
+                        <i class="fa-brands fa-html5 text-3xl text-orange-500"></i>
+                        <span class="text-sm font-medium text-slate-200">HTML5</span>
+                    </div>
+
+                    <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-center card-hover flex flex-col items-center justify-center gap-2">
+                        <i class="fa-brands fa-css3-alt text-3xl text-blue-500"></i>
+                        <span class="text-sm font-medium text-slate-200">CSS3</span>
+                    </div>
+
+                    <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-center card-hover flex flex-col items-center justify-center gap-2">
+                        <i class="fa-brands fa-js text-3xl text-yellow-400"></i>
+                        <span class="text-sm font-medium text-slate-200">JavaScript</span>
+                    </div>
+
+                    <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-center card-hover flex flex-col items-center justify-center gap-2">
+                        <i class="fa-solid fa-display text-3xl text-sky-400"></i>
+                        <span class="text-sm font-medium text-slate-200">Responsive Web Design</span>
+                    </div>
+
+                    <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-center card-hover flex flex-col items-center justify-center gap-2">
+                        <i class="fa-solid fa-mobile-button text-3xl text-emerald-400"></i>
+                        <span class="text-sm font-medium text-slate-200">Mobile-first Design</span>
+                    </div>
+
+                    <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-center card-hover flex flex-col items-center justify-center gap-2">
+                        <i class="fa-solid fa-layer-group text-3xl text-purple-400"></i>
+                        <span class="text-sm font-medium text-slate-200">Progressive Web Apps (PWA)</span>
+                    </div>
+
+                    <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-center card-hover flex flex-col items-center justify-center gap-2">
+                        <i class="fa-brands fa-git-alt text-3xl text-red-500"></i>
+                        <span class="text-sm font-medium text-slate-200">Git</span>
+                    </div>
+
+                    <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-center card-hover flex flex-col items-center justify-center gap-2">
+                        <i class="fa-brands fa-github text-3xl text-slate-300"></i>
+                        <span class="text-sm font-medium text-slate-200">GitHub</span>
+                    </div>
+
+                    <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-center card-hover flex flex-col items-center justify-center gap-2">
+                        <i class="fa-solid fa-code-compare text-3xl text-blue-400"></i>
+                        <span class="text-sm font-medium text-slate-200">VS Code</span>
+                    </div>
+
+                    <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-center card-hover flex flex-col items-center justify-center gap-2">
+                        <i class="fa-brands fa-chrome text-3xl text-teal-400"></i>
+                        <span class="text-sm font-medium text-slate-200">Chrome DevTools</span>
+                    </div>
+
+                    <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-center card-hover flex flex-col items-center justify-center gap-2 col-span-2 sm:col-span-1 md:col-span-2 lg:col-span-2">
+                        <i class="fa-solid fa-cloud-arrow-up text-3xl text-indigo-400"></i>
+                        <span class="text-sm font-medium text-slate-200">Basic Website Deployment</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="py-16 bg-slate-900/50 border-y border-slate-800/80">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                    <div>
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="p-2 rounded-lg bg-sky-500/10 text-sky-400">
+                                <i class="fa-solid fa-folder-open text-xl"></i>
+                            </div>
+                            <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Featured Projects</h2>
+                        </div>
+                        <p class="text-slate-400 text-sm">Practical frontend applications and web responsive interfaces.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <!-- Project 1: Sakshi Digital Studio -->
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden card-hover flex flex-col justify-between">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded bg-sky-950 text-sky-400 border border-sky-800">Responsive Business Website</span>
+                                <i class="fa-solid fa-globe text-slate-500"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">Sakshi Digital Studio</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                Responsive business website designed for a digital services business with services, pricing, contact information and WhatsApp enquiry functionality.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">Responsive design</span>
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">Services</span>
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">Pricing</span>
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">WhatsApp enquiry</span>
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">Contact section</span>
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">Mobile-friendly UI</span>
+                            </div>
+                        </div>
+                        <div class="px-6 pb-6 pt-2 border-t border-slate-800/60 flex items-center gap-3">
+                            <button onclick="openProjectModal(1)" class="w-full py-2.5 rounded-lg bg-slate-800 hover:bg-sky-500 hover:text-slate-950 text-slate-200 text-xs font-semibold transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-circle-info"></i> Project Details
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Lifemate -->
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden card-hover flex flex-col justify-between">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded bg-sky-950 text-sky-400 border border-sky-800">Meal Planning Web App</span>
+                                <i class="fa-solid fa-utensils text-slate-500"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">Lifemate</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                A practical web application designed to help users organize and manage meal planning through a simple and user-friendly interface.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">Responsive UI</span>
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">Interactive frontend</span>
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">Meal planning workflow</span>
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">Mobile-friendly design</span>
+                            </div>
+                        </div>
+                        <div class="px-6 pb-6 pt-2 border-t border-slate-800/60 flex items-center gap-3">
+                            <button onclick="openProjectModal(2)" class="w-full py-2.5 rounded-lg bg-slate-800 hover:bg-sky-500 hover:text-slate-950 text-slate-200 text-xs font-semibold transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-circle-info"></i> Project Details
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: SST-APP-PWA -->
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden card-hover flex flex-col justify-between">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded bg-sky-950 text-sky-400 border border-sky-800">Progressive Web App</span>
+                                <i class="fa-solid fa-mobile-retro text-slate-500"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">SST-APP-PWA</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                A practical PWA project focused on responsive application screens and browser-based workflows.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">PWA</span>
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">Responsive interface</span>
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">Web application workflow</span>
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">Mobile-friendly screens</span>
+                            </div>
+                        </div>
+                        <div class="px-6 pb-6 pt-2 border-t border-slate-800/60 flex items-center gap-3">
+                            <button onclick="openProjectModal(3)" class="w-full py-2.5 rounded-lg bg-slate-800 hover:bg-sky-500 hover:text-slate-950 text-slate-200 text-xs font-semibold transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-circle-info"></i> Project Details
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: Salt Spray Report PWA -->
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden card-hover flex flex-col justify-between">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded bg-sky-950 text-sky-400 border border-sky-800">Industrial PWA</span>
+                                <i class="fa-solid fa-clipboard-check text-slate-500"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">Salt Spray Report PWA</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                A Progressive Web App created around a practical salt-spray testing and reporting workflow with structured data-entry and reporting screens.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">PWA</span>
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">Structured forms</span>
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">Responsive UI</span>
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">Report workflow</span>
+                            </div>
+                        </div>
+                        <div class="px-6 pb-6 pt-2 border-t border-slate-800/60 flex items-center gap-3">
+                            <button onclick="openProjectModal(4)" class="w-full py-2.5 rounded-lg bg-slate-800 hover:bg-sky-500 hover:text-slate-950 text-slate-200 text-xs font-semibold transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-circle-info"></i> Project Details
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Project 5: JOBCARD -->
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden card-hover flex flex-col justify-between md:col-span-2 lg:col-span-1">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded bg-sky-950 text-sky-400 border border-sky-800">Web Application</span>
+                                <i class="fa-solid fa-id-card text-slate-500"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">JOBCARD</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                A web project designed around job-card management with structured frontend screens and forms.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">Forms</span>
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">Responsive UI</span>
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">Structured data</span>
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">Practical business workflow</span>
+                            </div>
+                        </div>
+                        <div class="px-6 pb-6 pt-2 border-t border-slate-800/60 flex items-center gap-3">
+                            <button onclick="openProjectModal(5)" class="w-full py-2.5 rounded-lg bg-slate-800 hover:bg-sky-500 hover:text-slate-950 text-slate-200 text-xs font-semibold transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-circle-info"></i> Project Details
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CAREER GOAL SECTION -->
+        <section id="career-goals" class="py-16">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="p-2 rounded-lg bg-sky-500/10 text-sky-400">
+                        <i class="fa-solid fa-bullseye text-xl"></i>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Career Goal & Target Roles</h2>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8">
+                    <p class="text-slate-300 leading-relaxed mb-8">
+                        As a Computer Science graduate eager to begin my professional journey in web development, I am seeking entry-level opportunities where I can apply my skills in HTML, CSS, JavaScript, and responsive design while learning from experienced developers.
+                    </p>
+
+                    <h3 class="text-base font-semibold text-sky-400 uppercase tracking-wider mb-4">I am actively looking for:</h3>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="p-4 rounded-xl bg-slate-950 border border-slate-800/80 flex items-center gap-3">
+                            <i class="fa-solid fa-laptop-code text-sky-400 text-lg"></i>
+                            <span class="text-sm font-medium text-slate-200">Frontend Developer Internship</span>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-950 border border-slate-800/80 flex items-center gap-3">
+                            <i class="fa-solid fa-code text-sky-400 text-lg"></i>
+                            <span class="text-sm font-medium text-slate-200">Web Developer Internship</span>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-950 border border-slate-800/80 flex items-center gap-3">
+                            <i class="fa-solid fa-user-graduate text-sky-400 text-lg"></i>
+                            <span class="text-sm font-medium text-slate-200">Fresher Frontend Developer</span>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-950 border border-slate-800/80 flex items-center gap-3">
+                            <i class="fa-solid fa-chart-line text-sky-400 text-lg"></i>
+                            <span class="text-sm font-medium text-slate-200">Junior Web Developer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION SECTION -->
+        <section id="education" class="py-16 bg-slate-900/50 border-y border-slate-800/80">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="p-2 rounded-lg bg-sky-500/10 text-sky-400">
+                        <i class="fa-solid fa-graduation-cap text-xl"></i>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Education</h2>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 navy-glow">
+                    <div>
+                        <span class="inline-block px-3 py-1 rounded-md bg-sky-950 text-sky-400 text-xs font-semibold border border-sky-800 mb-3">
+                            Bachelor's Degree
+                        </span>
+                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">B.Sc. Computer Science</h3>
+                        <p class="text-slate-300 text-base font-medium mb-1">
+                            G.V.I.S.H. College, Amravati (Autonomous)
+                        </p>
+                        <p class="text-slate-400 text-sm">
+                            Government Vidarbha Institute of Science and Humanities
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row md:flex-col gap-3 shrink-0">
+                        <div class="px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-slate-300 text-xs flex items-center gap-2">
+                            <i class="fa-solid fa-book-bookmark text-sky-400"></i>
+                            <span>Focus: Computer Science & Software Concepts</span>
+                        </div>
+                        <div class="px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-slate-300 text-xs flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot text-sky-400"></i>
+                            <span>Amravati, Maharashtra</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="py-16">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="p-2 rounded-lg bg-sky-500/10 text-sky-400">
+                        <i class="fa-solid fa-paper-plane text-xl"></i>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Get In Touch</h2>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <!-- Contact Cards -->
+                    <div class="lg:col-span-5 space-y-4">
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            I am actively seeking opportunities in Pune or remote entry-level frontend developer roles. Feel free to reach out directly via Email, Phone, WhatsApp, or LinkedIn!
+                        </p>
+
+                        <!-- LinkedIn Card -->
+                        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-between hover:border-blue-500/40 transition-colors">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0">
+                                    <i class="fa-brands fa-linkedin-in text-lg"></i>
+                                </div>
+                                <div class="overflow-hidden">
+                                    <p class="text-xs text-slate-400 uppercase tracking-wider font-medium">LinkedIn</p>
+                                    <a href="https://www.linkedin.com/in/sakshi-chavhan-41422b39a" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-slate-200 hover:text-blue-400 truncate block transition-colors">
+                                        Sakshi Chavhan Profile
+                                    </a>
+                                </div>
+                            </div>
+                            <a href="https://www.linkedin.com/in/sakshi-chavhan-41422b39a" target="_blank" rel="noopener noreferrer" class="p-2 text-slate-400 hover:text-blue-400 transition-colors" title="Visit LinkedIn">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <!-- Email Card -->
+                        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-between hover:border-sky-500/40 transition-colors">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-envelope text-lg"></i>
+                                </div>
+                                <div class="overflow-hidden">
+                                    <p class="text-xs text-slate-400 uppercase tracking-wider font-medium">Email Address</p>
+                                    <a href="mailto:fationplanet@gmail.com" class="text-sm font-semibold text-slate-200 hover:text-sky-400 truncate block transition-colors">
+                                        fationplanet@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+                            <button onclick="copyToClipboard('fationplanet@gmail.com', 'Email address copied!')" class="p-2 text-slate-400 hover:text-sky-400 transition-colors" title="Copy Email">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+
+                        <!-- Phone Card -->
+                        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-between hover:border-sky-500/40 transition-colors">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-phone text-lg"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-400 uppercase tracking-wider font-medium">Phone Number</p>
+                                    <a href="tel:8999117971" class="text-sm font-semibold text-slate-200 hover:text-sky-400 transition-colors">
+                                        +91 8999117971
+                                    </a>
+                                </div>
+                            </div>
+                            <button onclick="copyToClipboard('8999117971', 'Phone number copied!')" class="p-2 text-slate-400 hover:text-sky-400 transition-colors" title="Copy Phone">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+
+                        <!-- Location Card -->
+                        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-location-dot text-lg"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400 uppercase tracking-wider font-medium">Location</p>
+                                <p class="text-sm font-semibold text-slate-200">
+                                    Pune, Maharashtra, India
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Direct Action Buttons (WhatsApp & Mailto) -->
+                        <div class="pt-2 grid grid-cols-2 gap-3">
+                            <a href="https://wa.me/918999117971?text=Hi%20Sakshi,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect." target="_blank" rel="noopener noreferrer" class="py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs flex items-center justify-center gap-2 transition-all shadow-md shadow-emerald-900/30">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp Chat
+                            </a>
+                            <a href="mailto:fationplanet@gmail.com" class="py-3 px-4 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold text-xs flex items-center justify-center gap-2 transition-all shadow-md shadow-sky-950/30">
+                                <i class="fa-solid fa-paper-plane"></i> Send Email
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Direct Message Form -->
+                    <div class="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8">
+                        <h3 class="text-lg font-bold text-white mb-2">Send a Direct Message</h3>
+                        <p class="text-slate-400 text-xs mb-6">Leave a message below and I will get back to you promptly.</p>
+
+                        <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Your Name</label>
+                                <input type="text" id="name" required placeholder="e.g. Rahul Sharma" class="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-slate-200 placeholder-slate-500 text-sm focus:outline-none focus:border-sky-500 transition-colors">
+                            </div>
+
+                            <div>
+                                <label for="email" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Your Email</label>
+                                <input type="email" id="email" required placeholder="e.g. rahul@example.com" class="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-slate-200 placeholder-slate-500 text-sm focus:outline-none focus:border-sky-500 transition-colors">
+                            </div>
+
+                            <div>
+                                <label for="message" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Message</label>
+                                <textarea id="message" rows="4" required placeholder="Hi Sakshi, we would like to invite you for an interview..." class="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-slate-200 placeholder-slate-500 text-sm focus:outline-none focus:border-sky-500 transition-colors resize-none"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-3 rounded-xl bg-sky-500 text-slate-950 font-bold text-sm hover:bg-sky-400 transition-all shadow-md shadow-sky-500/20 active:scale-95">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 border-t border-slate-800/80 py-8 text-xs text-slate-400">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-slate-200">Sakshi Chavhan</span>
+                <span>•</span>
+                <span>Frontend Developer</span>
+                <span>•</span>
+                <span>Pune, India</span>
+            </div>
+
+            <div class="flex items-center gap-6">
+                <a href="#hero" class="hover:text-sky-400 transition-colors">Back to Top</a>
+                <a href="https://www.linkedin.com/in/sakshi-chavhan-41422b39a" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 transition-colors"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                <a href="mailto:fationplanet@gmail.com" class="hover:text-sky-400 transition-colors"><i class="fa-solid fa-envelope"></i> Email</a>
+                <a href="https://wa.me/918999117971" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition-colors"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-xl w-full p-6 relative max-h-[90vh] overflow-y-auto navy-glow">
+            <button onclick="closeProjectModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <span id="modalCategory" class="text-xs font-semibold px-2.5 py-1 rounded bg-sky-950 text-sky-400 border border-sky-800 mb-3 inline-block">Category</span>
+            <h3 id="modalTitle" class="text-2xl font-bold text-white mb-2">Project Title</h3>
+            <p id="modalDescription" class="text-slate-300 text-sm leading-relaxed mb-6">Description text...</p>
+
+            <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Key Highlights & Features:</h4>
+            <ul id="modalFeatures" class="space-y-2 text-sm text-slate-300 mb-6">
+            </ul>
+
+            <div class="pt-4 border-t border-slate-800 flex justify-end">
+                <button onclick="closeProjectModal()" class="px-5 py-2 rounded-xl bg-slate-800 text-slate-200 hover:bg-slate-700 text-xs font-semibold">
+                    Close Details
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300">
+        <div class="bg-sky-500 text-slate-950 font-semibold px-4 py-3 rounded-xl shadow-xl flex items-center gap-3 text-sm">
+            <i class="fa-solid fa-circle-check text-slate-950 text-base" id="toastIcon"></i>
+            <span id="toastMessage">Notification message</span>
+        </div>
+    </div>
+
+    <script>
+        const projectsData = {
+            1: {
+                title: "Sakshi Digital Studio",
+                category: "Responsive Business Website",
+                description: "Responsive business website designed for a digital services business with services, pricing, contact information and WhatsApp enquiry functionality.",
+                features: [
+                    "Responsive design across mobile, tablet, and desktop viewports",
+                    "Structured Services and Pricing sections for business offerings",
+                    "Integrated direct WhatsApp enquiry button for immediate client outreach",
+                    "Accessible contact section with streamlined feedback layout",
+                    "Mobile-first user experience designed for high accessibility"
+                ]
+            },
+            2: {
+                title: "Lifemate",
+                category: "Meal Planning Web Application",
+                description: "A practical web application designed to help users organize and manage meal planning through a simple and user-friendly interface.",
+                features: [
+                    "Responsive UI built for mobile and desktop screens",
+                    "Interactive frontend workflow for effortless meal schedule management",
+                    "Clean layouts highlighting daily and weekly meal plans",
+                    "User-friendly navigation designed for intuitive daily use"
+                ]
+            },
+            3: {
+                title: "SST-APP-PWA",
+                category: "Progressive Web App Project",
+                description: "A practical PWA project focused on responsive application screens and browser-based workflows.",
+                features: [
+                    "Progressive Web App architecture for modern browser support",
+                    "Responsive interface adapting to touch and pointer inputs",
+                    "Browser-based application workflows without external friction",
+                    "Mobile-friendly screens optimized for fast loading and readability"
+                ]
+            },
+            4: {
+                title: "Salt Spray Report PWA",
+                category: "Industrial Report-Management PWA",
+                description: "A Progressive Web App created around a practical salt-spray testing and reporting workflow with structured data-entry and reporting screens.",
+                features: [
+                    "Progressive Web App foundation for reliable mobile testing records",
+                    "Structured input forms for accurate salt-spray test data logging",
+                    "Clean reporting screens formatted for quick inspection review",
+                    "Responsive UI tailored for industrial testing environments"
+                ]
+            },
+            5: {
+                title: "JOBCARD",
+                category: "Web-Based Job-Card Project",
+                description: "A web project designed around job-card management with structured frontend screens and forms.",
+                features: [
+                    "Structured frontend forms for job entry and status tracking",
+                    "Responsive UI optimized for workstation and mobile browsers",
+                    "Organized layout for managing practical business workflows",
+                    "Clean UI feedback for data entry verification"
+                ]
+            }
+        };
+
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileDrawer = document.getElementById('mobileDrawer');
+        const menuIcon = document.getElementById('menuIcon');
+
+        if (mobileMenuBtn && mobileDrawer) {
+            mobileMenuBtn.addEventListener('click', () => {
+                const isHidden = mobileDrawer.classList.contains('hidden');
+                if (isHidden) {
+                    mobileDrawer.classList.remove('hidden');
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-xmark');
+                } else {
+                    mobileDrawer.classList.add('hidden');
+                    menuIcon.classList.remove('fa-xmark');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileDrawer.classList.add('hidden');
+                    menuIcon.classList.remove('fa-xmark');
+                    menuIcon.classList.add('fa-bars');
+                });
+            });
+        }
+
+        function openProjectModal(id) {
+            const project = projectsData[id];
+            if (!project) return;
+
+            document.getElementById('modalTitle').textContent = project.title;
+            document.getElementById('modalCategory').textContent = project.category;
+            document.getElementById('modalDescription').textContent = project.description;
+
+            const featuresList = document.getElementById('modalFeatures');
+            featuresList.innerHTML = '';
+            project.features.forEach(feature => {
+                const li = document.createElement('li');
+                li.className = 'flex items-start gap-2.5';
+                li.innerHTML = `<i class="fa-solid fa-circle-check text-sky-400 mt-1 text-xs"></i><span>${feature}</span>`;
+                featuresList.appendChild(li);
+            });
+
+            document.getElementById('projectModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProjectModal() {
+            document.getElementById('projectModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('projectModal').addEventListener('click', (e) => {
+            if (e.target.id === 'projectModal') {
+                closeProjectModal();
+            }
+        });
+
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            const toastIcon = document.getElementById('toastIcon');
+
+            toastMessage.textContent = message;
+            if (isError) {
+                toast.firstElementChild.className = "bg-red-500 text-white font-semibold px-4 py-3 rounded-xl shadow-xl flex items-center gap-3 text-sm";
+                toastIcon.className = "fa-solid fa-circle-exclamation text-white text-base";
+            } else {
+                toast.firstElementChild.className = "bg-sky-500 text-slate-950 font-semibold px-4 py-3 rounded-xl shadow-xl flex items-center gap-3 text-sm";
+                toastIcon.className = "fa-solid fa-circle-check text-slate-950 text-base";
+            }
+
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }, 3500);
+        }
+
+        function copyToClipboard(text, successMsg) {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showToast(successMsg);
+                }).catch(() => {
+                    fallbackCopy(text, successMsg);
+                });
+            } else {
+                fallbackCopy(text, successMsg);
+            }
+        }
+
+        function fallbackCopy(text, successMsg) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-999999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showToast(successMsg);
+            } catch (err) {
+                showToast("Failed to copy", true);
+            }
+            document.body.removeChild(textArea);
+        }
+
+        function handleResumeDownload(e) {
+            showToast("Downloading Sakshi's Resume (PDF)...");
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            showToast(`Thank you ${name}! Your message has been prepared.`);
+            document.getElementById('contactForm').reset();
+        }
+    </script>
+</body>
+</html>
+
